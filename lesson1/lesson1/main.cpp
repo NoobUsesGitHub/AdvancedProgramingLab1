@@ -22,8 +22,8 @@ int main()
 	int rocketPlayerSize = 40;
     sf::IntRect cell(0, 0, frameWidth,frameHeight);
 	sf::Sprite rocketPlayer(texture, cell);
-    //Star stars;
-    //stars.setOrigin(windowWidth / 2, windowHeight / 2);
+    Star stars;
+    stars.setPosition(498,113);
 
 	rocketPlayer.setPosition(windowWidth / 2.f, windowHeight / 2.f);
     sf::FloatRect bounds = rocketPlayer.getLocalBounds();
@@ -76,7 +76,7 @@ int main()
         }
         if (isMoving) {
             rocketPlayer.move(rocketPlayerPos);
-			//std::cout << "rocketPlayer position: (" << rocketPlayer.getPosition().x << ", " << rocketPlayer.getPosition().y << ")/n"<< std::endl;
+			std::cout << "rocketPlayer position: (" << rocketPlayer.getPosition().x << ", " << rocketPlayer.getPosition().y << ")/n"<< std::endl;
 
             if (rocketPlayer.getPosition().x < 0)
                 rocketPlayer.setPosition(0, rocketPlayer.getPosition().y);
@@ -115,7 +115,7 @@ int main()
 		//--- Render ---
         window.clear(color);
         window.draw(rocketPlayer);
-        //window.draw(stars);
+        window.draw(stars);
         window.display();
     }
 

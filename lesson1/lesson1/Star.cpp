@@ -4,12 +4,12 @@
 // IMPLEMENT the constructor using Star::
 Star::Star() {
     // Vertical Bar
-    m_verticalBar.setSize(sf::Vector2f(10.f, 60.f));
+    m_verticalBar.setSize(sf::Vector2f(width, height));
     m_verticalBar.setFillColor(sf::Color::White);
     m_verticalBar.setOrigin(m_verticalBar.getSize() / 2.f); // Centers it!
 
     // Horizontal Bar
-    m_horizontalBar.setSize(sf::Vector2f(60.f, 10.f));
+    m_horizontalBar.setSize(sf::Vector2f(height, width));
     m_horizontalBar.setFillColor(sf::Color::White);
     m_horizontalBar.setOrigin(m_horizontalBar.getSize() / 2.f); // Centers it!
 }
