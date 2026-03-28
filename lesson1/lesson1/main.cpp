@@ -1,5 +1,7 @@
 #include <SFML/Graphics.hpp>
+#include <cmath>
 #include <iostream>
+#include "Star.h" 
 int main()
 {
 	const int windowWidth = 700;
@@ -7,7 +9,7 @@ int main()
 	const int frameWidth = 200;
 	const int frameHeight = 207;
     sf::Texture texture;
-	texture.loadFromFile("C:/oz/APL1/AdvancedProgramingLab1/lesson1/lesson1/textures/rocetSpritesheet.png");
+    texture.loadFromFile("D:/study/colman/APL1/textures/rokcetSpritesheet.png");
 
 	int frame = 0;
 	const int columns = 4;
@@ -17,9 +19,13 @@ int main()
     //to do - change size and wall colission
 	//to do -add background and stars
 
-	int rocketPlayerSize = 40.f;
+	int rocketPlayerSize = 40;
     sf::IntRect cell(0, 0, frameWidth,frameHeight);
 	sf::Sprite rocketPlayer(texture, cell);
+    //Star stars;
+    //stars.setOrigin(windowWidth / 2, windowHeight / 2);
+
+	rocketPlayer.setPosition(windowWidth / 2.f, windowHeight / 2.f);
     sf::FloatRect bounds = rocketPlayer.getLocalBounds();
     rocketPlayer.setOrigin(bounds.width / 2.f, bounds.height / 2.f);
     sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "SFML lesson1");
@@ -35,6 +41,9 @@ int main()
     {
         // --- Event handling ---
         sf::Event event;
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {//quick close
+            window.close();
+        }
         while (window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed)
@@ -48,7 +57,6 @@ int main()
 		dt = clock.restart().asSeconds();
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {//right
 			rocketPlayerPos.x = speed * dt;
-			color.r = 255;
             isMoving = true;
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {//up
@@ -107,6 +115,7 @@ int main()
 		//--- Render ---
         window.clear(color);
         window.draw(rocketPlayer);
+        //window.draw(stars);
         window.display();
     }
 

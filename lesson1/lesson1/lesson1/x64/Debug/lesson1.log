@@ -1,2 +1,5 @@
 ﻿  main.cpp
-  lesson1.vcxproj -> C:\oz\APL1\AdvancedProgramingLab1\lesson1\lesson1\x64\Debug\lesson1.exe
+D:\study\colman\APL1\lesson1\lesson1\main.cpp(21,23): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\study\colman\APL1\lesson1\lesson1\main.cpp(84,85): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\study\colman\APL1\lesson1\lesson1\main.cpp(87,54): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  lesson1.vcxproj -> D:\study\colman\APL1\lesson1\lesson1\x64\Debug\lesson1.exe
