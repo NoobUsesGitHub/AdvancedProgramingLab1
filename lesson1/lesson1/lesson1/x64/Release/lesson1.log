@@ -1,10 +1,9 @@
-﻿  Star.cpp
-  main.cpp
-D:\study\colman\APL1\lesson1\lesson1\main.cpp(88,85): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\study\colman\APL1\lesson1\lesson1\main.cpp(91,54): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+﻿  main.cpp
+C:\oz\APL1\AdvancedProgramingLab1\lesson1\lesson1\main.cpp(128,85): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\oz\APL1\AdvancedProgramingLab1\lesson1\lesson1\main.cpp(131,54): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   Generating code
-  2 of 91 functions ( 2.2%) were compiled, the rest were copied from previous compilation.
+  1 of 168 functions ( 0.6%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
-  lesson1.vcxproj -> D:\study\colman\APL1\lesson1\lesson1\x64\Release\lesson1.exe
+  lesson1.vcxproj -> C:\oz\APL1\AdvancedProgramingLab1\lesson1\lesson1\x64\Release\lesson1.exe
