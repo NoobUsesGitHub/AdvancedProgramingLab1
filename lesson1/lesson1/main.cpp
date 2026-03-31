@@ -7,7 +7,7 @@
 int main()
 {
 	const int windowWidth = 1400;
-	const int windowHeight = 1600;
+	const int windowHeight = 1000;
 	const int frameWidth = 200;
 	const int frameHeight = 207;
     sf::Texture texture;
@@ -28,6 +28,8 @@ int main()
     std::vector<Star> stars;
     std::random_device rd;
     std::mt19937 gen(rd());
+    std::uniform_real_distribution<float> disX(0.f, windowWidth);
+    std::uniform_real_distribution<float> disY(0.f, windowHeight);
 	for (int i = 0; i < numberOfStars; ++i)
 	    stars.push_back(Star(windowWidth*1.5, windowHeight*1.5,gen ));
 
@@ -106,29 +108,70 @@ int main()
             direction.x = -rocketPlayerPos.x * parallaxFactor;
             direction.y = -rocketPlayerPos.y * parallaxFactor;
 
-            std::cout << "Star move delta: (" << direction.x << ", " << direction.y << ")\n";
+            //std::cout << "Star move delta: (" << direction.x << ", " << direction.y << ")\n";
 
-            // Now actually move the stars!
-			for (Star& star : stars)
-                star.starMove(direction,dt);
+            for (Star& star : stars) {
+                star.starMove(direction, dt);
+
+                sf::Vector2f pos = star.getPosition();
+                bool outOfBounds = false;
+
+                // Left edge -> Respawn on the Right edge, random Y
+                if (pos.x < 0) {
+                    pos.x = windowWidth;
+                    pos.y = disY(gen);
+                    outOfBounds = true;
+                }
+                // Right edge -> Respawn on the Left edge, random Y
+                else if (pos.x > windowWidth) {
+                    pos.x = 0;
+                    pos.y = disY(gen);
+                    outOfBounds = true;
+                }
+
+                // Top edge -> Respawn on the Bottom edge, random X
+                if (pos.y < 0) {
+                    pos.x = disX(gen);
+                    pos.y = windowHeight;
+                    outOfBounds = true;
+                }
+                // Bottom edge -> Respawn on the Top edge, random X
+                else if (pos.y > windowHeight) {
+                    pos.x = disX(gen);
+                    pos.y = 0;
+                    outOfBounds = true;
+                }
+
+                // Apply the new position if it went off screen
+                if (outOfBounds) {
+                    star.setPosition(pos.x, pos.y);
+                }
+            }
         }
-
-		//colision checking and position update
+        // Collision checking and position update
         if (isMoving) {
             rocketPlayer.move(rocketPlayerPos);
-			//std::cout << "rocketPlayer position: (" << rocketPlayer.getPosition().x << ", " << rocketPlayer.getPosition().y << ")/n"<< std::endl;
 
-            if (rocketPlayer.getPosition().x < 0)
-                rocketPlayer.setPosition(0, rocketPlayer.getPosition().y);
+            // Calculate half the width/height to account for your centered origin
+            float halfWidth = rocketPlayer.getLocalBounds().width / 2.f;
+            float halfHeight = rocketPlayer.getLocalBounds().height / 2.f;
+            sf::Vector2f currentPos = rocketPlayer.getPosition();
 
-            if (rocketPlayer.getPosition().y < 0)
-                rocketPlayer.setPosition(rocketPlayer.getPosition().x, 0);
+            // Left Wall
+            if (currentPos.x - halfWidth < 0)
+                rocketPlayer.setPosition(halfWidth, currentPos.y);
 
-            if (rocketPlayer.getPosition().y + (rocketPlayerSize / 2) > windowHeight)
-                rocketPlayer.setPosition(rocketPlayer.getPosition().x, windowHeight - (rocketPlayerSize / 2));
-            
-            if (rocketPlayer.getPosition().x + (rocketPlayerSize / 2) > windowWidth)
-                rocketPlayer.setPosition(windowWidth - (rocketPlayerSize / 2), rocketPlayer.getPosition().y);
+            // Right Wall
+            if (currentPos.x + halfWidth > windowWidth)
+                rocketPlayer.setPosition(windowWidth - halfWidth, currentPos.y);
+
+            // Top Wall
+            if (currentPos.y - halfHeight < 0)
+                rocketPlayer.setPosition(currentPos.x, halfHeight);
+
+            // Bottom Wall
+            if (currentPos.y + halfHeight > windowHeight)
+                rocketPlayer.setPosition(currentPos.x, windowHeight - halfHeight);
         }
         
         if (rocketPlayerPos.x != 0.f || rocketPlayerPos.y != 0.f)
