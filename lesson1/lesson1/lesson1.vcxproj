@@ -133,14 +133,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Star.cpp" />
+    <ClCompile Include="StarsManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="textures\rokcetSpritesheet.png" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="Globals.h" />
+    <ClInclude Include="InputHandler.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="Star.h" />
+    <ClInclude Include="StarsManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

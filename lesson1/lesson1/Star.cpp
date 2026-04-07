@@ -1,8 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <random>
-#include "Star.h" // Include your own header file!
+#include "Star.h" 
 
-// IMPLEMENT the constructor using Star::
 Star::Star() {
     // Vertical Bar
     m_verticalBar.setSize(sf::Vector2f(width, height));
@@ -31,7 +30,7 @@ Star::Star(float windowWidth, float windowHeight, std::mt19937& gen) {
     setPosition(disX(gen), disY(gen));
 }
 
-// IMPLEMENT the draw function using Star::
+
 void Star::draw(sf::RenderTarget& target, sf::RenderStates states) const {
     // Combine the position/rotation of the whole class with the internal shapes
     states.transform *= getTransform();

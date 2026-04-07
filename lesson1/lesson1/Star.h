@@ -1,9 +1,8 @@
-#pragma once // This prevents the file from being included multiple times
+#pragma once 
 #include <SFML/Graphics.hpp>
 
 class Star : public sf::Drawable, public sf::Transformable {
 public:
-    // We only DECLARE the constructor here
     Star();
 	Star(float windowWidth, float windowHeight, std::mt19937& gen);
 	virtual void starMove(sf::Vector2f direction, float dt) { sf::Transformable::move(direction ); }
@@ -22,8 +21,6 @@ private:
 	float speed = 50.f;
 	float width = 6.f;
 	float height = 18.f;
-
-    // We only DECLARE the draw function here
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 	
 };

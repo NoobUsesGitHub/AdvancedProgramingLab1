@@ -1,0 +1,22 @@
+﻿  Game.cpp
+C:\oz\APL1\AdvancedProgramingLab1\lesson1\lesson1\Game.h(2,10): error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  (compiling source file 'Game.cpp')
+  
+  InputHandler.cpp
+C:\oz\APL1\AdvancedProgramingLab1\lesson1\lesson1\InputHandler.h(2,10): error C1083: Cannot open include file: 'SFML/Window.hpp': No such file or directory
+  (compiling source file 'InputHandler.cpp')
+  
+  main.cpp
+C:\oz\APL1\AdvancedProgramingLab1\lesson1\lesson1\Game.h(2,10): error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  (compiling source file 'main.cpp')
+  
+  Player.cpp
+C:\oz\APL1\AdvancedProgramingLab1\lesson1\lesson1\Player.h(2,10): error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  (compiling source file 'Player.cpp')
+  
+  Star.cpp
+C:\oz\APL1\AdvancedProgramingLab1\lesson1\lesson1\Star.cpp(1,10): error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  StarsManager.cpp
+C:\oz\APL1\AdvancedProgramingLab1\lesson1\lesson1\Star.h(2,10): error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  (compiling source file 'StarsManager.cpp')
+  
