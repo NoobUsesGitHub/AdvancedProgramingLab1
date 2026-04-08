@@ -3,16 +3,20 @@
 
 Player::Player() :m_cell(0, 0, frameWidth, frameHeight){
 }
+Player::Player(PlayerType:: type) :m_cell(0, 0, frameWidth, frameHeight) {
+	if (type==2)
+	{
+		
+	}
+}
 
 Player::~Player() {}
+
 void Player::loadTexture() {
 	m_texture.loadFromFile(filePath);
 	m_sprite.setTexture(m_texture);
-
-	// FIX: Apply the initial cell rect so it doesn't draw the whole sheet
 	m_sprite.setTextureRect(m_cell);
 
-	// FIX: Set the origin here right after the texture rect is applied
 	sf::FloatRect bounds = m_sprite.getLocalBounds();
 	m_sprite.setOrigin(bounds.width / 2.f, bounds.height / 2.f);
 }
@@ -42,7 +46,7 @@ bool Player::isMoving()
 }
 
 void Player::update(float dt) {
-	std::cout << "Player Position - X: " << m_sprite.getPosition().x << " | Y: " << m_sprite.getPosition().y << std::endl;
+	//std::cout << "Player Position - X: " << m_sprite.getPosition().x << " | Y: " << m_sprite.getPosition().y << std::endl;
 	//if moving
 	if (isMoving()) {
 		m_sprite.move(m_velocity * dt);
@@ -78,25 +82,31 @@ void Player::update(float dt) {
 	m_animationTimer += dt;
 
 	if (m_animationTimer >= 0.12f)
-	{
-		frame = (frame + 1) % totalFrames;
+	 {
+	 	frame = (frame + 1) % totalFrames;
 
-		int col = frame % columns;
-		int row = frame / columns;
+	 	int col = frame % columns;
+	 	int row = frame / columns;
 
-		m_cell.left = col * frameWidth;
-		m_cell.top = row * frameHeight;
+	 	m_cell.left = col * frameWidth;
+	 	m_cell.top = row * frameHeight;
 
-		m_sprite.setTextureRect(m_cell);
-		sf::FloatRect bounds = m_sprite.getLocalBounds();
-		m_sprite.setOrigin(bounds.width / 2.f, bounds.height / 2.f);
-		m_sprite.setRotation(rotation + 90.f);
-		m_animationTimer = 0.f;
-	}
+	 	m_sprite.setTextureRect(m_cell);
+	 	sf::FloatRect bounds = m_sprite.getLocalBounds();
+	 	m_sprite.setOrigin(bounds.width / 2.f, bounds.height / 2.f);
+	 	m_sprite.setRotation(rotation + 90.f);
+	 	m_animationTimer = 0.f;
+	 }
+}
+void Player::hide() {
+	isHidden = true;
 }
 	
 void Player::render(sf::RenderWindow& window) {
-	window.draw(m_sprite);
+	if (!isHidden)
+	{
+		window.draw(m_sprite);
+	}
 }
 
 sf::Vector2f Player::getDirection() {

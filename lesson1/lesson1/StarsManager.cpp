@@ -24,6 +24,7 @@ void StarsManager::update(float dt, sf::Vector2f playerDirection) {
     std::random_device rd;
     std::mt19937 gen(rd());
     for (Star& star : m_stars) {
+
         star.starMove(playerDirection, dt);
 
         sf::Vector2f pos = star.getPosition();

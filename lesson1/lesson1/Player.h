@@ -15,14 +15,15 @@ public:
 	bool isMoving();
 	void render(sf::RenderWindow& window);
 	void setPosition(float x, float y);
+	void hide();
 
 	private:
+		const int frameWidth = 200;
+		const int frameHeight = 207;
 		sf::IntRect m_cell;
 		sf::Texture m_texture;
 		sf::Sprite m_sprite;
 		sf::Vector2f m_velocity = sf::Vector2f(0, 0);
-		const int frameWidth = 200;
-		const int frameHeight = 207;
 		const float speed = 200.f;
 		float rotation = 0.f;
 		const float sprintMultiplier = 1.5f;
@@ -30,7 +31,8 @@ public:
 		int frame = 0;
 		const int columns = 4;
 		const int totalFrames = 8;
-		const char* filePath = "C:/oz/APL1/AdvancedProgramingLab1/lesson1/lesson1/textures/rokcetSpritesheet.png";
+		bool isHidden = false;
+		const char* filePath = "C:/oz/APL1/AdvancedProgramingLab1/lesson1/lesson1/textures/rocketSpritesheet.png";
 		//const char* filePath = "D:/study/colman/APL1/textures/rokcetSpritesheet.png";
 		const int playerSize = 200;
 

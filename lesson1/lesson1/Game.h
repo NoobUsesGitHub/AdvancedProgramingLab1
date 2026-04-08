@@ -22,7 +22,12 @@ private: //members
 	sf::RenderWindow m_window;
 	sf::Clock m_clock;
 	Player m_player;
+	sf::RectangleShape m_pauseBackground;
+	sf::Text m_pauseText;
 	InputHandler m_inputHandler;
 	StarsManager m_starsManager;
+	bool pause= false;
+	bool twoPlayerGame = false;
+	sf::Font m_font;
 };
 

@@ -137,6 +137,7 @@
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerType.cpp" />
     <ClCompile Include="Star.cpp" />
     <ClCompile Include="StarsManager.cpp" />
   </ItemGroup>
@@ -148,8 +149,12 @@
     <ClInclude Include="Globals.h" />
     <ClInclude Include="InputHandler.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="Star.h" />
     <ClInclude Include="StarsManager.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="lesson1.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
