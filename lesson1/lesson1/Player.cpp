@@ -1,38 +1,53 @@
 #include "Player.h"
 
 
-Player::Player() :m_cell(0, 0, frameWidth, frameHeight){
+Player::Player() :Player(PlayerType::Arrows) {
 }
-Player::Player(PlayerType:: type) :m_cell(0, 0, frameWidth, frameHeight) {
-	if (type==2)
+Player::Player(PlayerType type) :m_cell(0, 0, frameWidth, frameHeight), m_controls{} {
+	m_type = type;
+	if (type==PlayerType::WASD)
 	{
-		
+		m_controls[0] = sf::Keyboard::W;//up
+		m_controls[1] = sf::Keyboard::S;//down
+		m_controls[2] = sf::Keyboard::A;//left
+		m_controls[3] = sf::Keyboard::D;//right
+
+		//WASD controls
+	}
+	else {
+		m_controls[0] = sf::Keyboard::Up;//up
+		m_controls[1] = sf::Keyboard::Down;//down
+		m_controls[2] = sf::Keyboard::Left;//left
+		m_controls[3] = sf::Keyboard::Right;//right
 	}
 }
 
 Player::~Player() {}
 
 void Player::loadTexture() {
-	m_texture.loadFromFile(filePath);
-	m_sprite.setTexture(m_texture);
+	m_sprite.setTexture(rocketTexture);
 	m_sprite.setTextureRect(m_cell);
 
 	sf::FloatRect bounds = m_sprite.getLocalBounds();
 	m_sprite.setOrigin(bounds.width / 2.f, bounds.height / 2.f);
+	if(m_type==PlayerType::WASD)
+	{
+		m_sprite.setColor(sf::Color(100, 100, 100));
+	}
 }
 
 void Player::handleInput(InputHandler& input) {
 	m_velocity = sf::Vector2f(0, 0);
-	if (input.isKeyPressed(sf::Keyboard::Right)) {//right
+	if (input.isKeyPressed(m_controls[3])) {//right
 		m_velocity.x = speed;
 	}
-	if (input.isKeyPressed(sf::Keyboard::Up)) {//up
+	if (input.isKeyPressed(m_controls[0])) {//up
 		m_velocity.y = -1 * speed;
 	}
-	if (input.isKeyPressed(sf::Keyboard::Down)) {//down
+	if (input.isKeyPressed(m_controls[1])) {//down
 		m_velocity.y = speed;
 	}
-	if (input.isKeyPressed(sf::Keyboard::Left)) {//left
+	if (input.isKeyPressed(m_controls[2])) {//left
 		m_velocity.x = speed * -1;
 	}
 	if (input.isKeyPressed(sf::Keyboard::LShift)) {//sprint

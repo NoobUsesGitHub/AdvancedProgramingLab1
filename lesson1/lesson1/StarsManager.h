@@ -14,5 +14,6 @@ class StarsManager
 		void render(sf::RenderWindow& window);
 	private:
 		std::vector<Star> m_stars;
+		std::mt19937 m_gen;
 };
 

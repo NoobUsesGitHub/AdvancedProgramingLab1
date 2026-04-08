@@ -17,17 +17,18 @@ private:
 	void processEvents();
 	void update(float dt);
 	void render();
-
+	void createPauseText();
 private: //members
 	sf::RenderWindow m_window;
 	sf::Clock m_clock;
 	Player m_player;
+	Player m_player2;
 	sf::RectangleShape m_pauseBackground;
 	sf::Text m_pauseText;
 	InputHandler m_inputHandler;
 	StarsManager m_starsManager;
 	bool pause= false;
-	bool twoPlayerGame = false;
+	bool twoPlayerGame = true;
 	sf::Font m_font;
 };
 

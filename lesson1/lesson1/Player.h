@@ -3,10 +3,12 @@
 #include "Globals.h"
 #include "InputHandler.h"
 #include <iostream>
+#include "playerType.cpp"
 class Player
 {
 public:
 	Player();
+	Player(PlayerType type);
 	~Player();
 	sf::Vector2f getDirection();
 	void handleInput(InputHandler& input);
@@ -21,19 +23,19 @@ public:
 		const int frameWidth = 200;
 		const int frameHeight = 207;
 		sf::IntRect m_cell;
-		sf::Texture m_texture;
 		sf::Sprite m_sprite;
 		sf::Vector2f m_velocity = sf::Vector2f(0, 0);
+		sf::Keyboard::Key m_controls[4];//fix
 		const float speed = 200.f;
 		float rotation = 0.f;
+		PlayerType m_type;
 		const float sprintMultiplier = 1.5f;
 		float m_animationTimer = 0.f;
 		int frame = 0;
 		const int columns = 4;
 		const int totalFrames = 8;
 		bool isHidden = false;
-		const char* filePath = "C:/oz/APL1/AdvancedProgramingLab1/lesson1/lesson1/textures/rocketSpritesheet.png";
-		//const char* filePath = "D:/study/colman/APL1/textures/rokcetSpritesheet.png";
+		
 		const int playerSize = 200;
 
 
